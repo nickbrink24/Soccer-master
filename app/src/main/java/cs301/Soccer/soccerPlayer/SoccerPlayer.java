@@ -5,7 +5,6 @@ package cs301.Soccer.soccerPlayer;
  *
  * @author Vegdahl
  * @author Nuxoll
- *
  */
 public class SoccerPlayer {
 
@@ -22,10 +21,10 @@ public class SoccerPlayer {
      * SoccerPlayer constructor.  The parameters are copied in. Remaining fields
      * are set to zero.
      *
-     * @param first first name
-     * @param last last name
+     * @param first   first name
+     * @param last    last name
      * @param uniform uniform number
-     * @param team name of team
+     * @param team    name of team
      */
     public SoccerPlayer(String first, String last, int uniform, String team) {
         firstName = first;
@@ -41,21 +40,27 @@ public class SoccerPlayer {
     public String getFirstName() {
         return firstName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public int getUniform() {
         return uniformNum;
     }
+
     public int getGoals() {
         return goalsScored;
     }
+
     public int getYellowCards() {
         return yellowCards;
     }
+
     public int getRedCards() {
         return redCards;
     }
+
     public String getTeamName() {
         return teamName;
     }
@@ -69,9 +74,11 @@ public class SoccerPlayer {
     public void bumpGoals() {
         goalsScored++;
     }
+
     public void bumpYellowCards() {
         yellowCards++;
     }
+
     public void bumpRedCards() {
         redCards++;
     }

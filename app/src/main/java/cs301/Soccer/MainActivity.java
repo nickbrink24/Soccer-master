@@ -8,6 +8,7 @@ package cs301.Soccer;
  */
 
 // imports
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.CountDownTimer;
@@ -22,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import cs301.Soccer.soccerPlayer.SoccerPlayer;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -98,28 +100,28 @@ public class MainActivity extends Activity {
         // initialize the GUI objects from resources
         topView = (View) findViewById(R.id.top_view);
         spinner = (Spinner) findViewById(R.id.team_spinner);
-        firstNameField = (EditText)findViewById(R.id.first_name_field);
-        lastNameField = (EditText)findViewById(R.id.last_name_field);
-        teamNameField = (EditText)findViewById(R.id.team_field);
-        uniformNumberField = (EditText)findViewById(R.id.uniform_num_field);
-        fileNameField = (EditText)findViewById(R.id.file_name_field);
-        goalsField = (EditText)findViewById(R.id.goals_field);
-        yellowsField = (EditText)findViewById(R.id.yellow_cards_field);
-        redsField = (EditText)findViewById(R.id.red_cards_field);
-        countField = (EditText)findViewById(R.id.player_count_field);
-        addButton = (Button)findViewById(R.id.add_player_button_widget);
-        findButton = (Button)findViewById(R.id.find_player_button_widget);
-        removeButton = (Button)findViewById(R.id.remove_player_button_widget);
-        clearButton = (Button)findViewById(R.id.clear_database_button_widget);
-        incrGoalButton = (Button)findViewById(R.id.incr_goal_button_widget);
-        incrYellowCardButton = (Button)findViewById(R.id.incr_yellow_card_button_widget);
-        incrRedCardButton = (Button)findViewById(R.id.incr_red_card_button_widget);
-        countPlayersButton = (Button)findViewById(R.id.count_players_button_widget);
-        firstPlayerButton = (Button)findViewById(R.id.first_player_button_widget);
-        nextPlayerButton = (Button)findViewById(R.id.next_player_button_widget);
-        readButton = (Button)findViewById(R.id.read_button_widget);
-        writeButton = (Button)findViewById(R.id.write_button_widget);
-        populateButton = (Button)findViewById(R.id.populate_button_widget);
+        firstNameField = (EditText) findViewById(R.id.first_name_field);
+        lastNameField = (EditText) findViewById(R.id.last_name_field);
+        teamNameField = (EditText) findViewById(R.id.team_field);
+        uniformNumberField = (EditText) findViewById(R.id.uniform_num_field);
+        fileNameField = (EditText) findViewById(R.id.file_name_field);
+        goalsField = (EditText) findViewById(R.id.goals_field);
+        yellowsField = (EditText) findViewById(R.id.yellow_cards_field);
+        redsField = (EditText) findViewById(R.id.red_cards_field);
+        countField = (EditText) findViewById(R.id.player_count_field);
+        addButton = (Button) findViewById(R.id.add_player_button_widget);
+        findButton = (Button) findViewById(R.id.find_player_button_widget);
+        removeButton = (Button) findViewById(R.id.remove_player_button_widget);
+        clearButton = (Button) findViewById(R.id.clear_database_button_widget);
+        incrGoalButton = (Button) findViewById(R.id.incr_goal_button_widget);
+        incrYellowCardButton = (Button) findViewById(R.id.incr_yellow_card_button_widget);
+        incrRedCardButton = (Button) findViewById(R.id.incr_red_card_button_widget);
+        countPlayersButton = (Button) findViewById(R.id.count_players_button_widget);
+        firstPlayerButton = (Button) findViewById(R.id.first_player_button_widget);
+        nextPlayerButton = (Button) findViewById(R.id.next_player_button_widget);
+        readButton = (Button) findViewById(R.id.read_button_widget);
+        writeButton = (Button) findViewById(R.id.write_button_widget);
+        populateButton = (Button) findViewById(R.id.populate_button_widget);
 
         // initialize the colors
         backgroundColor = getResources().getColor(R.color.background_color);
@@ -187,8 +189,7 @@ public class MainActivity extends Activity {
             goalsField.setText(currentPlayer.getGoals() + "");
             yellowsField.setText(currentPlayer.getYellowCards() + "");
             redsField.setText(currentPlayer.getRedCards() + "");
-        }
-        else if (currentPlayer != null) {
+        } else if (currentPlayer != null) {
             // player exists, but we want to clear everything except the
             // first and last name
             teamNameField.setText("");
@@ -196,8 +197,7 @@ public class MainActivity extends Activity {
             goalsField.setText("");
             yellowsField.setText("");
             redsField.setText("");
-        }
-        else {
+        } else {
             // player does not exist: clear everything
             firstNameField.setText("");
             lastNameField.setText("");
@@ -223,7 +223,8 @@ public class MainActivity extends Activity {
         }
     }
 
-    /** get the name of the team selected in the menu
+    /**
+     * get the name of the team selected in the menu
      *
      * @return the name of the team selected in the menu, or null if no
      * single team is selected
@@ -297,14 +298,16 @@ public class MainActivity extends Activity {
 
         // set up a timer that waits 1/20 of a second, quits after
         // the first tick, and resets the background to normal
-        CountDownTimer timer = new CountDownTimer(50,100000) {
+        CountDownTimer timer = new CountDownTimer(50, 100000) {
             @Override
             public void onFinish() {
                 topView.setBackgroundColor(backgroundColor);
                 topView.invalidate();
             }
+
             @Override
-            public void onTick(long millis) {  }
+            public void onTick(long millis) {
+            }
         };
 
         // start the timer
@@ -421,8 +424,7 @@ public class MainActivity extends Activity {
             // current player (who has just been removed) and update GUI fields
             if (!database.removePlayer(first, last)) {
                 flash();
-            }
-            else {
+            } else {
                 currentPlayer = null;
                 updateAll(false);
                 toast("Removed Player");
@@ -445,7 +447,7 @@ public class MainActivity extends Activity {
             clearTeams();
             currentPlayer = null;
             updateAll(false);
-            if(result) {
+            if (result) {
                 toast("Database Cleared");
             }
         }
@@ -453,7 +455,7 @@ public class MainActivity extends Activity {
 
     /**
      * abstract listener class for the "plus" buttons
-     *
+     * <p>
      * Defines the 'onClick' method; declares an abstract method, 'applyAction',
      * which should perform the appropriate action.
      */
@@ -491,7 +493,7 @@ public class MainActivity extends Activity {
          * Performs an action on a player in the database
          *
          * @param first the first name of the player
-         * @param last the last name of the player
+         * @param last  the last name of the player
          * @return whether the action was successful
          */
         public abstract boolean applyAction(String first, String last);
@@ -623,7 +625,7 @@ public class MainActivity extends Activity {
             }
 
             // attempt the database operation; if unsuccessful, flash and return
-            if (!database.readData(new File(getFilesDir(),fileName))) {
+            if (!database.readData(new File(getFilesDir(), fileName))) {
                 flash();
                 return;
             }
@@ -667,7 +669,7 @@ public class MainActivity extends Activity {
 
             // attempt the operation; if unsuccessful, flash
             try {
-                if (!database.writeData(new File(getFilesDir(),fileName))) {
+                if (!database.writeData(new File(getFilesDir(), fileName))) {
                     flash();
                     return;
                 }
@@ -726,8 +728,7 @@ public class MainActivity extends Activity {
         if (player != null) {
             currentPlayer = player;
             currentIteratorIndex++;
-        }
-        else {
+        } else {
             flash();
             return;
         }
